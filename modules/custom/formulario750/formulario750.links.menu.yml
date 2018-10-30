@@ -1,0 +1,14 @@
+
+# Mueble menu items definition
+entity.mueble.collection:
+  title: 'Mueble list'
+  route_name: entity.mueble.collection
+  description: 'List Mueble entities'
+  parent: system.admin_structure
+  weight: 100
+
+mueble.admin.structure.settings:
+  title: Mueble settings
+  description: 'Configure Mueble entities'
+  route_name: mueble.settings
+  parent: system.admin_structure

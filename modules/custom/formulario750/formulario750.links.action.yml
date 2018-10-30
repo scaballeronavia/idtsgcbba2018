@@ -1,0 +1,5 @@
+entity.mueble.add_form:
+  route_name: entity.mueble.add_form
+  title: 'Add Mueble'
+  appears_on:
+    - entity.mueble.collection

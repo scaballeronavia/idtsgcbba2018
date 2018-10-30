@@ -1,0 +1,22 @@
+add inmueble entity entities:
+  title: 'Create new Inmueble entity entities'
+
+administer inmueble entity entities:
+  title: 'Administer Inmueble entity entities'
+  description: 'Allow to access the administration form to configure Inmueble entity entities.'
+  restrict access: true
+
+delete inmueble entity entities:
+  title: 'Delete Inmueble entity entities'
+
+edit inmueble entity entities:
+  title: 'Edit Inmueble entity entities'
+
+access inmueble entity overview:
+  title: 'Access the Inmueble entity overview page'
+
+view published inmueble entity entities:
+  title: 'View published Inmueble entity entities'
+
+view unpublished inmueble entity entities:
+  title: 'View unpublished Inmueble entity entities'

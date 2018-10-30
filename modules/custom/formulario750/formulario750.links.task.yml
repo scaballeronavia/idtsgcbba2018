@@ -1,0 +1,22 @@
+# Mueble routing definition
+mueble.settings_tab:
+  route_name: mueble.settings
+  title: 'Settings'
+  base_route: mueble.settings
+
+entity.mueble.canonical:
+  route_name: entity.mueble.canonical
+  base_route: entity.mueble.canonical
+  title: 'View'
+
+entity.mueble.edit_form:
+  route_name: entity.mueble.edit_form
+  base_route: entity.mueble.canonical
+  title: 'Edit'
+
+entity.mueble.delete_form:
+  route_name:  entity.mueble.delete_form
+  base_route:  entity.mueble.canonical
+  title: Delete
+  weight: 10
+

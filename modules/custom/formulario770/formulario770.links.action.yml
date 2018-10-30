@@ -1,0 +1,5 @@
+entity.inmueble_entity.add_form:
+  route_name: entity.inmueble_entity.add_form
+  title: 'Add Inmueble entity'
+  appears_on:
+    - entity.inmueble_entity.collection

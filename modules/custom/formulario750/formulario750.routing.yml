@@ -1,0 +1,40 @@
+
+formulario750.mueble_controller_hello:
+  path: '/formulario750/hello/{name}'
+  defaults:
+    _controller: '\Drupal\formulario750\Controller\MuebleController::hello'
+    _title: 'hello'
+  requirements:
+    _permission: 'access content'
+
+formulario750Routing:
+  path: '/crear-bienes-muebles'
+  defaults:
+    _controller: '\Drupal\formulario750\Controller\MuebleController::content'
+    _title: 'Crear Cesion de Bienes Mueble (750)'
+  requirements:
+    _permission: 'access content'
+
+formularioEdit750Routing:
+  path: '/mueble/{inmueble}/edit'
+  defaults:
+    _controller: '\Drupal\formulario750\Controller\MuebleController::content_edit'
+    _title: 'Editar Cesion de Bienes Mueble (750)'
+  requirements:
+    _permission: 'access content'
+
+formularioPrint750Routing:
+  path: '/mueble/{inmueble}/print'
+  defaults:
+    _controller: '\Drupal\formulario750\Controller\MuebleController::content_print'
+    _title: 'Formulario de Bienes Mueble (750)'
+  requirements:
+    _permission: 'access content'
+
+formularioReporte750Routing:
+  path: '/reporte-muebles'
+  defaults:
+    _controller: '\Drupal\formulario750\Controller\MuebleController::content_reporte'
+    _title: 'Reporte Cesion de Bienes Mueble (750)'
+  requirements:
+    _permission: 'access content'

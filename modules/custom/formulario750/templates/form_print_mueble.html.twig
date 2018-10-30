@@ -1,0 +1,403 @@
+<div id="form-edit-mueble">
+  <form ng-submit="submit()" ng-controller="muebleEditController">
+    <label id="idMueble">ID del formulario: {{'{{idMueble}}'}}</label>
+    <table id="form-1">
+      <body>
+        <tr>
+          <td>
+            <div class="nombre">
+              <label for="nombre">Nombre(s) y Apellidos o Razon Social:</label>
+              <input id="nombre" type="text" ng-model="nombrecompleto" class="validate" disabled>
+            </div>
+            <div class="categoria">
+              <label for="categoria"><font color="red">* </font>Categoria:</label>
+              <div class="select-wrapper">
+                <select class="browser-default" for="categoria" ng-model="get_categoria" ng-change="categoriaSelected(get_categoria)" disabled>
+                  <option value="" disabled selected>Elige una Categoria</option>
+                  <option ng-repeat="i in categorias" value="{{'{{i.name}}'}}">{{'{{i.name}}'}}</option>
+                </select>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="domicilio">
+              <label for="domicilio" >Domicilio:</label>
+              <input id="domicilio" type="text" ng-model="domicilio" class="validate" disabled>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="ci">
+              <label for="ci" >CI / NIT:</label>
+              <input id="ci" type="text" ng-model="ci" class="validate" disabled>
+            </div>
+            <div class="emitido">
+              <label for="emitido" >Emitido:</label>
+              <input id="emitido" type="text" ng-model="emitido" class="validate" disabled>
+            </div>
+            <div class="periodo">
+              <label for="periodo" class="active">Periodo:</label>
+              <input id="periodo" type="text" ng-model="periodo_fecha" class="validate" disabled>
+            </div>
+            <div class="documento">
+              <label for="documento">Documento:</label>
+              <input ng-model="get_documento" type="radio" name="documento" value="dd jj original" disabled>DD JJ Original<br>
+              <input ng-model="get_documento" type="radio" name="documento" value="folio" disabled>Folio<br>
+            </div>
+          </td>
+        </tr>
+      </body>
+    </table>
+    <br>
+    <label for="grado">INFORMACION SOBRE LOS ACTUANTES EN LA OPERACION</label>
+    <table id="form-2">
+      <body>
+        <tr>
+          <td>
+            <div class="res-admin">
+              <label for="res-admin" >Nro. de resolución administrativa</label>
+              <input id="res-admin" type="text" ng-model="resAdmin" class="validate" required disabled>
+            </div>
+            <div class="formulario">
+              <label for="formulario" >Formulario:</label>
+              <input id="formulario" type="text" ng-model="formulario" class="validate" disabled>
+            </div>
+            <div class="nro-orden">
+              <label for="nro-orden" class="active">Nro. de orden</label>
+              <input id="nro-orden" type="text" ng-model="orden" class="validate" disabled>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label><font color="red">* </font>Grado de Parentesco:</label>
+            <div class="select-wrapper">
+              <select id="grado" class="browser-default" for="gradoparentesco" ng-model="grado_parentesco" ng-change="gradoSelected(grado_parentesco)" disabled>
+                <option value="" disabled selected>Elige un Grado</option>
+                <option ng-repeat="i in gradoParentesco" value="{{'{{i.name}}'}}">{{'{{i.name}}'}}</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+      </body>
+    </table>
+    <div id="actuantes">
+      <div id="cedentes">
+        <label for="cedentes"><font color="red">* </font>Enajenantes o Cedentes:</label>
+        <!--<a ng-click="add_cedentes()">Añadir</a><br>
+        <a ng-click="remove_cedentes()">Eliminar</a>-->
+        <table style="width:100%">
+          <thead>
+            <tr>
+              <!--<th>Seleccionar</th>-->
+              <th>Nombre(s) y Apellidos o Denomicacion</th>
+              <th>Domicilio</th>
+              <th>Participacion (%)</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="dato in totalCedentes">
+            <tr>
+              <!--<td><input type="checkbox" ng-model="dato.isDelete" disabled/></td>-->
+              <td><input type="text" ng-model="dato.nombre" disabled/></td>
+              <td><input type="text" ng-model="dato.domicilio" disabled/></td>
+              <td><input type="text" ng-model="dato.porcent" disabled/></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="cesionarios">
+        <label for="cesionarios"><font color="red">* </font>Adquirientes o Cesionarios:</label>
+        <!--<a ng-click="add_cesionarios()">Añadir</a><br>
+        <a ng-click="remove_cesionarios()">Eliminar</a>-->
+        <table style="width:100%">
+          <thead>
+            <tr>
+              <!--<th>Seleccionar</th>-->
+              <th>Nombre(s) y Apellidos o Denomicacion</th>
+              <th>Domicilio</th>
+              <th>Participacion (%)</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="data in totalCesionarios">
+            <tr>
+              <!--<td><input type="checkbox" ng-model="data.isDelete" disabled/></td>-->
+              <td><input type="text" ng-model="data.name" disabled/></td>
+              <td><input type="text" ng-model="data.address" disabled/></td>
+              <td><input type="text" ng-model="data.porcentaje" disabled/></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><br>
+    <div id="datos_referentes">
+      <label>DATOS REFERENTES AL MUEBLE QUE SE TRASMITE GRATUITAMENTE</label>
+      <div>
+        <label><input ng-model="datosReferentes" type="radio" value="motonave" ng-change="changeReferent(datosReferentes)" disabled>MOTONAVE</label> <br>
+        <label><input ng-model="datosReferentes" type="radio" value="aeronave" ng-change="changeReferent(datosReferentes)" disabled>AERONAVE</label> <br>
+        <label><input ng-model="datosReferentes" type="radio" value="cuotas y otros" ng-change="changeReferent(datosReferentes)" disabled>CUOTAS DE CAPITAL, OTROS BIENES MUEBLES Y DERECHOS</label> <br>
+        <label><input ng-model="datosReferentes" type="radio" value="vehiculos" ng-change="changeReferent(datosReferentes)" disabled>VEHÍCULOS</label> <br>
+      </div>
+      <fieldset ng-show="showMotonave">
+        <label>Motonave</label>
+        <div class="motonave">
+          <div class="nombre">
+            <label for="nombre">Tipo de casco</label>
+            <input id="nombre" type="text" ng-model="moTipoCasco" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div class="categoria">
+            <label for="nombre">Eslora</label>
+            <input id="nombre" type="text" ng-model="moEslora" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Material de construcción</label>
+            <input id="nombre" type="text" ng-model="moMaterial" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Potencia de motor</label>
+            <input id="nombre" type="text" ng-model="moPotenciaMotor" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Matricula</label>
+            <input id="nombre" type="text" ng-model="moMatricula" class="validate" ng-change="getReferente()" disabled>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset ng-show="showAeronave">
+        <label>Aeronave</label>
+        <div class="aeronave">
+          <div class="nombre">
+            <label for="nombre">Marca</label>
+            <input id="nombre" type="text" ng-model="aeroMarca" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div class="categoria">
+            <label for="nombre">Modelo</label>
+            <input id="nombre" type="text" ng-model="aeroModelo" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Año</label>
+            <input id="nombre" type="text" ng-model="aeroAnio" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Matricula</label>
+            <input id="nombre" type="text" ng-model="aeroMatricula" class="validate" ng-change="getReferente()" disabled>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset ng-show="showCuotas">
+        <label>Cuotas de capital, otros bienes muebles y derechos</label>
+        <div class="cuotas">
+          <div class="nombre">
+            <label for="nombre">Sujetos a registro</label>
+            <input id="nombre" type="text" ng-model="cuotaRegistro" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div class="categoria">
+            <label for="nombre">Monto</label>
+            <input id="nombre" type="number" min="0" ng-model="cuotaMonto" class="validate" ng-change="getReferente();calculateIncome()" disabled>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset ng-show="showVehiculos">
+        <label>Vehiculos</label>
+        <div class="vehiculos">
+          <div class="nombre">
+            <label for="nombre">Tipo</label>
+            <input id="nombre" type="text" ng-model="veTipo" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div class="categoria">
+            <label for="nombre">Marca</label>
+            <input id="nombre" type="text" ng-model="veMarca" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Modelo</label>
+            <input id="nombre" type="text" ng-model="veModelo" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Cilindrada</label>
+            <input id="nombre" type="text" ng-model="veCilindrada" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Procedencia</label>
+            <input id="nombre" type="text" ng-model="veProceden" class="validate" ng-change="getReferente()" disabled>
+          </div>
+          <div>
+            <label for="nombre">Nro de placa</label>
+            <input id="nombre" type="text" ng-model="vePlaca" class="validate" ng-change="getReferente()" disabled>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="city">
+      <div id="departamento">
+        <label>Departamento:</label>
+        <select class="browser-default" for="departamento" ng-model="get_departamento" ng-change="deptoSelected(get_departamento)" disabled>
+          <option value="" disabled selected>Elija un Departamento</option>
+          <option ng-repeat="i in departamento" ng-if="i.name=='Cochabamba'" value="{{'{{i.tid}}'}}">{{'{{i.name}}'}}</option>
+        </select>
+      </div>
+      <div id="localidad">
+        <label>Localidad o Ciudad:</label>
+        <select class="browser-default" for="localidad" ng-model="get_localidad" ng-change="localidadSelected(get_localidad)" disabled>
+          <option value="" disabled selected>Elija una Localidad</option>
+          <option ng-repeat="i in localidad" value="{{'{{i.tid}}'}}">{{'{{i.name}}'}}</option>
+        </select>
+      </div>
+      <div id="cod_localidad">
+        <label for="codigo_localidad">Codigo Localidad:</label>
+        <input id="codigo_localidad" type="text" ng-model="get_codigo_localidad" class="validate" disabled>
+      </div>
+    </div>
+    <div class="locality">
+      <div id="alcaldia">
+        <label for="alcaldia">Alcaldia:</label>
+        <input id="alcaldia" type="text" ng-model="get_alcaldia" class="validate" disabled>
+      </div>
+      <div id="fecha-transmicion">
+        <label for="fecha_transmicion" class="active"><font color="red">* </font>Fecha de la Transmision:</label>
+        <input id="fecha_transmicion" type="date" class="datepicker picker__input" ng-model="fecha_transmicion" ng-change="dateTransmicionSelected(fecha_transmicion)" disabled>
+      </div>
+    </div>
+    <div class="base-imponible">
+      <div id="base-imponible" ng-show="!showCuotas">
+        <label for="base_imponible"><font color="red">* </font>Base Imponible:</label>
+        <input id="base_imponible" type="number" step="0.01" min="0" ng-model="get_base_imponible" class="validate" ng-change="baseImponibleSelected(get_base_imponible)" disabled>
+      </div>
+      <div id="base-imponible-update" ng-show="!showCuotas">
+        <label for="base_imponible_update">Base Inponible Actualizada:</label>
+        <input id="base-imponible-update" type="number" step="0.01" ng-model="get_base_imponible_update" class="validate" disabled>
+      </div>
+      <div class="alicuota">
+        <label for="alicuota">Alicuota del Impuesto:</label>
+        <input ng-model="alicuota" type="radio" name="alicuota" value="1" disabled>Ascendientes, descendientes o conyugue (1%)<br>
+        <input ng-model="alicuota" type="radio" name="alicuota" value="10" disabled>Hermanos y sus descendientes (10%)<br>
+        <input ng-model="alicuota" type="radio" name="alicuota" value="20" disabled>Otros colaterales (20%)<br>
+      </div>
+    </div>
+    <div class="description-mueble">
+      <div id="impuesto-mueble">
+        <label for="impuesto">Impuesto a Pagar:</label>
+        <input id="impuesto" type="number" min="0" ng-model="get_impuesto" class="validate" disabled>
+      </div><br>
+      <div id="description-mueble">
+        <label for="description">Descripcion:</label>
+        <textarea id="description" for="description" ng-model="get_description" rows="4" cols="60" disabled></textarea>
+      </div>
+    </div>
+    <div id="deposito-bancario">
+      <label>Deposito Bancario:</label>
+      <!--
+      <a ng-click="add_deposito_bancario()">Añadir deposito</a><br>
+      <a ng-click="remove_deposito_bancario()">Eliminar deposito</a>-->
+      <table style="width:100%">
+        <thead>
+          <tr>
+            <!--<th>Seleccionar</th>-->
+            <th>Codigo</th>
+            <th>Monto del Deposito</th>
+            <th>Nombre(s) y Apellidos</th>
+            <th>Fecha del Deposito</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="dato in totalDeposito">
+          <tr>
+            <!--<td><input type="checkbox" ng-model="dato.isDelete" disabled/></td>-->
+            <td><input type="text" ng-model="dato.codigoDeposito" disabled/></td>
+            <td><input string-to-number type="number" step="0.01" min="0" ng-model="dato.montoDeposito" disabled/></td>
+            <td><input type="text" ng-model="dato.nombreDeposito" disabled/></td>
+            <td><input id="fecha-deposito" type="date" class="datepicker picker__input" ng-model="dato.fechaDeposito" disabled></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- fin santi -->
+    <div id="fecha_pago_multa" ng-show="show_fecha_pago_multa">
+      <label for="fecha_pago_multa" class="active">Fecha a Pagar la Multa:</label>
+      <input id="fecha_pagoMulta" type="date" class="datepicker picker__input" ng-model="get_fecha_pago_multa" ng-change="dateSelected(get_fecha_pago_multa)" disabled>
+    </div><br>
+
+    <div class="saltopagina" ng-show="show_fecha_pago_multa">
+      <div data-at-region="region-header-first" class="l-r region pr-header__header-first">
+        <div id="block-pixture-reloaded-branding" class="block block-branding block-system block-system-branding-block">
+          <div class="block__inner block-branding__inner">
+          <div class="block__content block-branding__content site-branding"><a href="/" title="Inicio" itemprop="url" rel="home" class="site-branding__logo-link"><img src="/sites/default/files/bgescudocochabamba-desktop.png" alt="Inicio" itemprop="logo" class="site-branding__logo-img"></a><span class="site-branding__text"><strong class="site-branding__name"><a href="/" title="Inicio" itemprop="url" rel="home" class="site-branding__name-link">IDTSG</a></strong><em class="site-branding__slogan">Gobernación Autónoma de Cochabamba</em></span></div>
+          </div>
+        </div>
+      </div>
+      <h1 class="js-quickedit-page-title page__title">Formulario Multa de Bienes Mueble (750)</h1>
+      <label id="idMueble">ID del formulario: {{'{{idMueble}}'}}</label>
+      <table id="form-1">
+        <body>
+          <tr>
+            <td>
+              <div class="nombre">
+                <label for="nombre">Nombre(s) y Apellidos o Razon Social:</label>
+                <input id="nombre" type="text" ng-model="nombrecompleto" class="validate" disabled>
+              </div>
+              <div class="categoria">
+                <label for="categoria"><font color="red">* </font>Categoria:</label>
+                <div class="select-wrapper">
+                  <select class="browser-default" for="categoria" ng-model="get_categoria" ng-change="categoriaSelected(get_categoria)" disabled>
+                    <option value="" disabled selected>Elige una Categoria</option>
+                    <option ng-repeat="i in categorias" value="{{'{{i.name}}'}}">{{'{{i.name}}'}}</option>
+                  </select>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="domicilio">
+                <label for="domicilio" >Domicilio:</label>
+                <input id="domicilio" type="text" ng-model="domicilio" class="validate" disabled>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ci">
+                <label for="ci" >CI / NIT:</label>
+                <input id="ci" type="text" ng-model="ci" class="validate" disabled>
+              </div>
+              <div class="emitido">
+                <label for="emitido" >Emitido:</label>
+                <input id="emitido" type="text" ng-model="emitido" class="validate" disabled>
+              </div>
+              <div class="periodo">
+                <label for="periodo" class="active">Periodo:</label>
+                <input id="periodo" type="text" ng-model="periodo_fecha" class="validate" disabled>
+              </div>
+              <div class="documento">
+                <label for="documento">Documento:</label>
+                <input ng-model="get_documento" type="radio" name="documento" value="dd jj original" disabled>DD JJ Original<br>
+                <input ng-model="get_documento" type="radio" name="documento" value="folio" disabled>Folio<br>
+              </div>
+            </td>
+          </tr>
+        </body>
+      </table>
+      <div id="table-multa">
+        <table style="width:100%">
+          <thead>
+            <tr>
+              <th>Impuesto al Pago</th>
+              <th>Mantenimiento al Valor</th>
+              <th>Tasa de Interes</th>
+              <th>Multa al Incumplimiento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{'{{get_impuesto}}'}}</td>
+              <td>{{'{{multa_mantenimientoAlValor}}'}}</td>
+              <td>{{'{{multa_tasaDeInteres}}'}}</td>
+              <td>{{'{{multa_alIncumplimiento}}'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4>Total Multa: {{'{{multaTotal}}'}} Bs.-</h4>
+      </div><br>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+# Inmueble entity menu items definition
+entity.inmueble_entity.collection:
+  title: 'Inmueble entity list'
+  route_name: entity.inmueble_entity.collection
+  description: 'List Inmueble entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+inmueble_entity.admin.structure.settings:
+  title: Inmueble entity settings
+  description: 'Configure Inmueble entity entities'
+  route_name: inmueble_entity.settings
+  parent: system.admin_structure

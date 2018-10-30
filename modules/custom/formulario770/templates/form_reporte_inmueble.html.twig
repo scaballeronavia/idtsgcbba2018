@@ -1,0 +1,84 @@
+<script src="https://rawgithub.com/eligrey/FileSaver.js/master/FileSaver.js" type="text/javascript"></script><!--export report in pdf-->
+
+<div id="form-reporte-inmueble">
+  <form ng-controller="inmuebleReporteController">
+    <div style="overflow-x:auto;">
+      <!--<label for="lista-inmuebles">Lista Inmuebles</label>-->
+
+      <div>
+        <div style="width: 25%; float: left; padding: 10px;">
+          <label>Buscar: <input ng-model="search"></label>
+        </div>
+        <div style="width: 25%; float: left; padding: 10px;">
+          <label>
+            Desde <input type="date" ng-model="desde">
+          </label>
+        </div>
+        <div style="width: 25%; float: left; padding: 10px;">
+          <label>
+            hasta <input type="date" ng-model="hasta">
+          </label>
+        </div>
+        <div style="width: 25%; float: left; padding: 10px;">
+          <button type="button" ng-click="buscarPorFecha(desde, hasta)">Buscar</button>
+        </div>
+      </div>
+      <button ng-click="exportData()">Exportar</button>
+      <div id="exportable">
+        <br><p>#inmuebles: {{'{{num_inmuebles}}'}}</p>
+        <table style="width:100%" class="table-reporte">
+          <thead>
+            <tr>
+              <th>#Orden</th>
+              <th>Contribuyente</th>
+              <th><a href="#" ng-click="sortType = 'cedentes_name' ; sortReverse = !sortReverse">Cedentes</th>
+              <th>CI</th>
+              <!--<th>Domicilio</th>-->
+              <!--<th>Porcentaje</th>-->
+              <th>Cesionarios</th>
+              <!--<th>Domicilio</th>-->
+              <!--<th>Porcentaje</th>-->
+              <th>Impuesto Bs</th>
+              <th>Fecha a Pagar</th>
+              <th>Fecha del Deposito</th>
+              <th>Pago del Deposito</th>
+              <th>Multa</th>
+              <th>Dias c/Mora</th>
+              <th>#Depositos al Banco</th>
+              <th>Estado</th>
+              <th>Editado</th>
+              <th>Gestionar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--<tr ng-repeat="i in inmuebles | filter:filterRange | filter:search | orderBy:sortType:sortReverse">-->
+            <tr ng-repeat="i in inmuebles | filter:search | orderBy:sortType:sortReverse">
+              <td>{{'{{i.nro_orden}}'}}</td>
+              <!--<td>{{'{{i.id}}'}}</td>-->
+              <td>{{'{{i.name}}'}}</td>
+              <td>{{'{{i.cedentes_name}}'}}</td>
+              <td>{{'{{i.ci}}'}}</td>
+              <!--<td>{{'{{i.cedentes_domicilio}}'}}</td>-->
+              <!--<td>{{'{{i.cedentes_porcentaje}}'}}</td>-->
+              <td>{{'{{i.cesionarios_name}}'}}</td>
+              <!--<td>{{'{{i.cesionarios_domicilio}}'}}</td>-->
+              <!--<td>{{'{{i.cesionarios_porcentaje}}'}}</td>-->
+              <td>{{'{{i.impuesto}}'}}</td>
+              <td>{{'{{i.fecha_pago}}'}}</td>
+              <td>{{'{{i.deposito_fecha}}'}}<input type="hidden" ng-value="{{'{{i.timestamp}}'}}"></td>
+              <td>{{'{{i.deposito_monto}}'}}</td>
+              <td>{{'{{i.custom_multa}}'}}</td>
+              <td ng-repeat="x in arrayFechaPago" ng-if="i.id==x.id">{{'{{x.dias}}'}}</td>
+              <td>{{'{{i.num_depositos}}'}}</td>
+              <td>{{'{{i.estado_form}}'}}</td>
+              <td>{{'{{i.user_edit}}'}}</td>
+              <!--<td><a href="inmueble/{{'{{i.id}}'}}/edit">Editar</a></td>-->
+              <td ng-repeat="x in usuario" ng-if="i.estado_form == 'Guardado'"><a href="inmueble/{{'{{i.id}}'}}/edit">Editar</a><p ng-if="x.roles_target_id == 'Contribuyente'"><a href="inmueble/{{'{{i.id}}'}}/print">Imprimir</a></p></td>
+              <td  ng-if="i.estado_form == 'Finalizado'"><a href="inmueble/{{'{{i.id}}'}}/print">Imprimir</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,7 @@
+registration_role_custom.setting.form:
+  path: '/admin/people/registration-role'
+  defaults:
+    _title: 'Registration role'
+    _form: '\Drupal\registration_role_custom\Form\RegistrationRoleCustomSettings'
+  requirements:
+    _permission: 'administer users'

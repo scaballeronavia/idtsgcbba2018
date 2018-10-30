@@ -1,0 +1,22 @@
+add mueble entities:
+  title: 'Create new Mueble entities'
+
+administer mueble entities:
+  title: 'Administer Mueble entities'
+  description: 'Allow to access the administration form to configure Mueble entities.'
+  restrict access: true
+
+delete mueble entities:
+  title: 'Delete Mueble entities'
+
+edit mueble entities:
+  title: 'Edit Mueble entities'
+
+access mueble overview:
+  title: 'Access the Mueble overview page'
+
+view published mueble entities:
+  title: 'View published Mueble entities'
+
+view unpublished mueble entities:
+  title: 'View unpublished Mueble entities'

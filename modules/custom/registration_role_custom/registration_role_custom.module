@@ -1,0 +1,26 @@
+<?php
+use \Drupal\Core\Routing\RouteMatchInterface;
+use \Drupal\Core\Entity\EntityInterface;
+/**
+ * Implementation of hook_help().
+ *
+ */
+function registration_role_custom_help($route_name, RouteMatchInterface $route_match) {
+ $output = '';
+ switch ($route_name) {
+   case 'help.page.registration_role_custom':
+     $output = t("Auto-assign a role upon registration.");
+     return $output;
+ }
+}
+
+function registration_role_custom_user_presave(Drupal\Core\Entity\EntityInterface $entity) {
+	$current_path = \Drupal::service('path.current')->getPath(); //ADD BY SANTI
+  $config = \Drupal::config('registration_role_custom.setting');
+	//print_r($config->get('role_to_select')); die;
+  foreach ($config->get('role_to_select') as $key => $value) {
+  	if($current_path == '/user/register') {                    //ADD BY SANTI
+    	if($value) $entity->addRole($key);
+    }
+  }
+}

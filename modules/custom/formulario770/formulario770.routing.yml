@@ -1,0 +1,40 @@
+
+formulario770.inmueble_controller_hello:
+  path: '/formulario770/hello/{name}'
+  defaults:
+    _controller: '\Drupal\formulario770\Controller\InmuebleController::hello'
+    _title: 'hello'
+  requirements:
+    _permission: 'access content'
+
+formulario770Routing:
+  path: '/crear-bienes-inmuebles'
+  defaults:
+    _controller: '\Drupal\formulario770\Controller\InmuebleController::content'
+    _title: 'Crear Cesion de Bienes Inmueble (770)'
+  requirements:
+    _permission: 'access content'
+
+formularioEdit770Routing:
+  path: '/inmueble/{inmueble}/edit'
+  defaults:
+    _controller: '\Drupal\formulario770\Controller\InmuebleController::content_edit'
+    _title: 'Editar Cesion de Bienes Inmueble (770)'
+  requirements:
+    _permission: 'access content'
+
+formularioPrint770Routing:
+  path: '/inmueble/{inmueble}/print'
+  defaults:
+    _controller: '\Drupal\formulario770\Controller\InmuebleController::content_print'
+    _title: 'Formulario de Bienes Inmueble (770)'
+  requirements:
+    _permission: 'access content'
+
+formularioReporte770Routing:
+  path: '/reporte-inmuebles'
+  defaults:
+    _controller: '\Drupal\formulario770\Controller\InmuebleController::content_reporte'
+    _title: 'Reporte Cesion de Bienes Inmueble (770)'
+  requirements:
+    _permission: 'access content'

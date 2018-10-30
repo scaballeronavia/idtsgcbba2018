@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Contains formulario750.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function formulario750_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the formulario750 module.
+    case 'help.page.formulario750':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Formulario 750') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function formulario750_theme() {
+  $theme = [];
+  $theme = array(
+    'formulario750' => array(
+      'variables' => array(),
+      'template' => 'form_mueble',  //name_file_.html.twig
+    ),
+    'formularioEdit750' => array(
+      'variables' => array(),
+      'template' => 'form_edit_mueble',  //name_file_.html.twig
+    ),
+    'formularioPrint750' => array(
+      'variables' => array(),
+      'template' => 'form_print_mueble',  //name_file_.html.twig
+    ),
+    'formularioReporte750' => array(
+      'variables' => array(),
+      'template' => 'form_reporte_mueble',  //name_file_.html.twig
+    ),
+  );
+  return $theme;
+}

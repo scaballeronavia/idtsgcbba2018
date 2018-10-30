@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Contains formulario770.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function formulario770_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the formulario770 module.
+    case 'help.page.formulario770':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function formulario770_theme() {
+  $theme = [];
+  $theme = array(
+    'formulario770' => array(
+      'variables' => array(),
+      'template' => 'form_inmueble',  //name_file_.html.twig
+    ),
+    'formularioEdit770' => array(
+      'variables' => array(),
+      'template' => 'form_edit_inmueble',  //name_file_.html.twig
+    ),
+    'formularioPrint770' => array(
+      'variables' => array(),
+      'template' => 'form_print_inmueble',  //name_file_.html.twig
+    ),
+    'formularioReporte770' => array(
+      'variables' => array(),
+      'template' => 'form_reporte_inmueble',  //name_file_.html.twig
+    ),
+  );
+  return $theme;
+}

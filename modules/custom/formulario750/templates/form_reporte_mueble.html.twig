@@ -1,0 +1,60 @@
+<script src="https://rawgithub.com/eligrey/FileSaver.js/master/FileSaver.js" type="text/javascript"></script>
+
+<div id="form-reporte-mueble">
+  <form ng-controller="muebleReporteController">
+    <div style="overflow-x:auto">
+      <!--<label for="lista-inmuebles">Lista Inmuebles</label>-->
+      <label>Buscar: <input ng-model="search"></label><br>
+      <button ng-click="exportData()">Exportar</button>
+      <div id="exportable">
+        <table style="width:100%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Contribuyente</th>
+              <th><a href="#" ng-click="sortType = 'cedentes_name' ; sortReverse = !sortReverse">Cedentes</th>
+              <!--<th>Domicilio</th>-->
+              <!--<th>Porcentaje</th>-->
+              <th>Cesionarios</th>
+              <!--<th>Domicilio</th>-->
+              <!--<th>Porcentaje</th>-->
+              <th>Impuesto Bs</th>
+              <th>Fecha a Pagar</th>
+              <th>Fecha del Deposito</th>
+              <th>Pago del Deposito</th>
+              <th>Multa</th>
+              <th>Dias c/Mora</th>
+              <th>#Depositos al Banco</th>
+              <th>Estado</th>
+              <th>Editado</th>
+              <th>Gestionar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="i in muebles | filter:search | orderBy:sortType:sortReverse">
+              <td>{{'{{i.id}}'}}</td>
+              <td>{{'{{i.name}}'}}</td>
+              <td>{{'{{i.cedentes_name}}'}}</td>
+              <!--<td>{{'{{i.cedentes_domicilio}}'}}</td>-->
+              <!--<td>{{'{{i.cedentes_porcentaje}}'}}</td>-->
+              <td>{{'{{i.cesionarios_name}}'}}</td>
+              <!--<td>{{'{{i.cesionarios_domicilio}}'}}</td>-->
+              <!--<td>{{'{{i.cesionarios_porcentaje}}'}}</td>-->
+              <td>{{'{{i.impuesto}}'}}</td>
+              <td>{{'{{i.fecha_pago}}'}}</td>
+              <td>{{'{{i.deposito_fecha}}'}}</td>
+              <td>{{'{{i.deposito_monto}}'}}</td>
+              <td>{{'{{i.custom_multa}}'}}</td>
+              <td ng-repeat="x in arrayFechaPago" ng-if="i.id==x.id">{{'{{x.dias}}'}}</td>
+              <td>{{'{{i.num_depositos}}'}}</td>
+              <td>{{'{{i.status_form_750}}'}}</td>
+              <td>{{'{{i.user_edit}}'}}</td>
+              <td ng-if="i.status_form_750 == 'Guardado'"><a href="mueble/{{'{{i.id}}'}}/edit">Editar</a></td>
+              <td  ng-if="i.status_form_750 == 'Finalizado'"><a href="mueble/{{'{{i.id}}'}}/print">Imprimir</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>

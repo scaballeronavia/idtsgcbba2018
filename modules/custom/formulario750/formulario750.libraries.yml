@@ -1,0 +1,39 @@
+formulario750:
+    version: VERSION
+    js:
+      js/angular.min.js: {}
+      js/mueble.js: {}
+      bower_components/moment/moment.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupal
+
+formularioEdit750:
+    version: VERSION
+    js:
+      js/angular.min.js: {}
+      js/mueble-edit.js: {}
+      bower_components/moment/moment.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupal
+
+formularioPrint750:
+    version: VERSION
+    js:
+      js/angular.min.js: {}
+      js/mueble-print.js: {}
+      bower_components/moment/moment.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupal
+
+formularioReporte750:
+    version: VERSION
+    js:
+      js/angular.min.js: {}
+      js/mueble-reporte.js: {}
+      bower_components/moment/moment.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupal

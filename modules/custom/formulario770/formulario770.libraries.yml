@@ -1,0 +1,39 @@
+formulario770:
+    version: VERSION
+    js:
+      js/angular.min.js: {}
+      js/inmueble.js: {}
+      bower_components/moment/moment.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupal
+
+formularioEdit770:
+    version: VERSION
+    js:
+      js/angular.min.js: {}
+      js/inmueble-edit.js: {}
+      bower_components/moment/moment.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupal
+
+formularioPrint770:
+    version: VERSION
+    js:
+      js/angular.min.js: {}
+      js/inmueble-print.js: {}
+      bower_components/moment/moment.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupal
+
+formularioReporte770:
+    version: VERSION
+    js:
+      js/angular.min.js: {}
+      js/inmueble-reporte.js: {}
+      bower_components/moment/moment.js: {}
+    dependencies:
+      - core/jquery
+      - core/drupal

@@ -1,0 +1,228 @@
+/**
+ * Custom CSS
+ * Use this file to override styles if you feel uncomfortable editing
+ * component stylesheets.
+ ============================================================================ */
+
+#form-1, #form-2, #form-3, #form-4, #form-5, #form-6, #form-7 {
+	width: 100% !important;
+}
+
+#form-1 input[type=text]{
+	width: 80%;
+}
+
+#form-1 .nombre,
+#form-1 .domicilio{
+	width: 70% !important;
+	float: left;
+}
+
+#form-1 .categoria {
+	width: 30%;
+	float: left;
+}
+
+#form-1 .ci,
+#form-1 .emitido,
+#form-1 .periodo,
+#form-1 .documento {
+	width: 25%;
+	float: left;
+}
+
+#form-2 .res-admin,
+#form-2 .formulario,
+#form-2 .nro-orden{
+	width: 33%;
+	float: left;
+}
+
+#form-2 .res-admin input,
+#form-2 .formulario input,
+#form-2 .nro-orden input{
+	width: 90%;
+}
+
+#datos_referentes fieldset{
+	margin-bottom: 20px;
+	border: 0.5px solid #cccccc;
+	padding: 10px;
+}
+
+#datos_referentes .motonave,
+#datos_referentes .aeronave,
+#datos_referentes .cuotas,
+#datos_referentes .vehiculos{
+	flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#datos_referentes .motonave div,
+#datos_referentes .aeronave div,
+#datos_referentes .cuotas div,
+#datos_referentes .vehiculos div{
+	margin: 5px 0px 5px 0px;
+  width: 33%;
+  float: left;
+}
+#datos_referentes .motonave div input,
+#datos_referentes .aeronave div input,
+#datos_referentes .cuotas div input,
+#datos_referentes .vehiculos div input{
+	width: 90%;
+}
+
+.city{
+	flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+.city div{
+	margin: 5px 0px 5px 0px;
+  width: 33%;
+  float: left;
+}
+
+.locality, .base-imponible, .date-mueble{
+	flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+.locality div, .base-imponible div, .date-mueble div{
+	margin: 5px 0px 5px 0px;
+  width: 33%;
+  float: left;
+}
+
+.description-mueble{
+	flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+.description-mueble div{
+	margin: 5px 0px 5px 0px;
+  width: 45%;
+  float: left;
+}
+
+/**
+Print muebles
+**/
+@media print {
+  #leaderboard, #navbar, #content-prefix, #footer, .attribution{
+    display: none !important;
+  }
+
+  #idMueble, #idInmueble{
+    float: right !important;
+  }
+}
+
+/**
+Edit width page
+**/
+.l-rw{
+  max-width: 100%;
+}
+
+/**
+santi
+**/
+#form-3 .codigo_catastral_alcaldia,
+#form-3 .codigo_catastral_dr,
+#form-3 .direccion-inmueble,
+#form-3 .departamento,
+#form-3 .localidad,
+#form-3 .code_localidad {
+  width: 40%;
+  float: left;
+}
+
+#form-4 .superficie-total,
+#form-4 .superficie-transferida,
+#form-4 .superficie-impuesto-municiapal,
+#form-4 .alcaldia {
+  width: 50%;
+  float: left;
+}
+
+#form-5 .fecha-transmicion,
+#form-5 .baseimponible,
+#form-5 .base-imponible-update,
+#form-5 .impuesto-inmueble {
+  width: 50%;
+  float: left;
+}
+
+#form-6 .alicuota,
+#form-6 .description-inmueble,
+#form-7 .fecha-actual,
+#form-7 .fecha-pago {
+  width: 50%;
+  float: left;
+}
+
+/*
+*salto de pagina Print.
+*/
+@media print{
+  div.saltopagina{
+    display:block;
+    page-break-before:always;
+  }
+}
+
+/*
+*responsive table.
+*/
+.view-inmueble-rest,
+.view-mueble-rest {
+  overflow-x: auto;
+}
+
+/*
+* Para todas las tablas.
+*/
+.table-reporte, table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    /*border-color: #fcfcfc;*/
+    border-color: #d9d9d9;
+}
+
+tr:hover{
+  background-color:#f5f5f5
+}
+
+th {
+  background-color: #454545 ;
+  color: white;
+  border: none;
+}
+
+/*
+popup sweealert2
+*/
+.swal2-modal .swal2-styled {
+  height: 40px;
+}
