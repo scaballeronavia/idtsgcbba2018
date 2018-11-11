@@ -719,8 +719,8 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 # }
 $databases['default']['default'] = array (
   'database' => 'idtsgcbba',
-  'username' => 'drupal',
-  'password' => 'drupal',
+  'username' => 'root',
+  'password' => '',
   'prefix' => '',
   'host' => '127.0.0.1',
   'port' => '3306',
